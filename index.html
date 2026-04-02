@@ -1,14 +1,240 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Limithil OS</title>
+    <title>LimithilI OS - The Ultimate Linux Customization</title>
+    <style>
+        :root {
+            --bg-dark: #0a0f14;
+            --bg-card: #161e27;
+            --primary-green: #2ecc71;
+            --primary-blue: #3498db;
+            --text-main: #e0e0e0;
+            --text-dim: #a0a0a0;
+            --gradient: linear-gradient(135deg, #2ecc71 0%, #2980b9 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background: rgba(10, 15, 20, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #ffffff10;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .lang-switch button {
+            background: transparent;
+            border: 1px solid var(--primary-green);
+            color: var(--primary-green);
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .lang-switch button:hover {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: radial-gradient(circle at center, #1a2a3a 0%, #0a0f14 100%);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 10%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #ffffff05;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--primary-green);
+        }
+
+        .card h3 {
+            color: var(--primary-green);
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 50px;
+            border-top: 1px solid #ffffff10;
+            color: var(--text-dim);
+        }
+
+        /* Language display logic */
+        [data-lang="en"] { display: none; }
+        html[lang="en"] [data-lang="vi"] { display: none; }
+        html[lang="en"] [data-lang="en"] { display: block; }
+        html[lang="vi"] [data-lang="vi"] { display: block; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to Limithil OS</h1>
-    <p>This is a website for Limithil OS with Vietnamese and English language support.</p>
-    <p>Chào mừng đến với Limithil OS</p>
-    <p>Đây là trang web cho Limithil OS với hỗ trợ ngôn ngữ Việt và Anh.</p>
+
+    <nav>
+        <div class="logo">LimithilI OS</div>
+        <div class="nav-links">
+            <div class="lang-switch">
+                <button onclick="setLanguage('vi')">VN</button>
+                <button onclick="setLanguage('en')">EN</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1 data-lang="vi">Hệ Điều Hành LimithilI</h1>
+        <h1 data-lang="en">LimithilI Operating System</h1>
+        
+        <p data-lang="vi">Nền tảng Linux dựa trên Debian với khả năng tùy chỉnh vô hạn. Hiệu năng tối đa, trải nghiệm cá nhân hóa.</p>
+        <p data-lang="en">A Debian-based Linux platform with infinite customization. Maximum performance, personalized experience.</p>
+
+        <div class="btn-group">
+            <a href="#download" class="btn btn-primary" data-lang="vi">Tải về ngay</a>
+            <a href="#download" class="btn btn-primary" data-lang="en">Download Now</a>
+            
+            <a href="https://github.com/LinuxDEdeveloper/LimithilI-Operating-System-repo" class="btn btn-outline" target="_blank">GitHub</a>
+        </div>
+    </section>
+
+    <section class="features" id="download">
+        <div class="card">
+            <h3 data-lang="vi">Dựa trên Debian</h3>
+            <h3 data-lang="en">Debian Based</h3>
+            <p data-lang="vi">Kế thừa sự ổn định và kho ứng dụng khổng lồ từ Debian Stable/Sid.</p>
+            <p data-lang="en">Inheriting stability and a massive software repository from Debian Stable/Sid.</p>
+        </div>
+        <div class="card">
+            <h3 data-lang="vi">Tùy biến tối đa</h3>
+            <h3 data-lang="en">Fully Customizable</h3>
+            <p data-lang="vi">Mọi thành phần hệ thống đều có thể điều chỉnh theo ý muốn của người dùng.</p>
+            <p data-lang="en">Every system component can be adjusted to the user's preference.</p>
+        </div>
+        <div class="card">
+            <h3 data-lang="vi">Tải xuống</h3>
+            <h3 data-lang="en">Download</h3>
+            <p data-lang="vi">Phiên bản Alpha đang được phát triển. Theo dõi Repo để cập nhật ISO mới nhất.</p>
+            <p data-lang="en">Alpha version is under development. Follow the Repo for the latest ISO updates.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 LimithilI OS Project. Powered by LinuxDEdeveloper.</p>
+    </footer>
+
+    <script>
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            localStorage.setItem('preferred-lang', lang);
+        }
+
+        // Kiểm tra ngôn ngữ đã lưu hoặc mặc định
+        const savedLang = localStorage.getItem('preferred-lang') || 'vi';
+        setLanguage(savedLang);
+    </script>
 </body>
 </html>
